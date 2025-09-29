@@ -116,9 +116,12 @@ We use https://www.liquibase.org to manage our database schema changes. Sample o
 
 [OpenSearch](https://opensearch.org/) will become more and more important part of our technical stack. Definitely get to know with their [Query DSL](https://opensearch.org/docs/latest/opensearch/query-dsl/index/) to onboard faster.
 
+#### NB!
+For development purposes, it is often useful to run both the Bükstack and individual modules locally. This can be done using Docker Compose. Refer to the README in each module's repository for instructions.
+
 ### Contact 
 
-If you want to contact regarding to Bürokratt's **technical solutions,** contact rainer.turner at ria.ee.
+If you want to contact regarding to Bürokratt's **technical solutions,** contact varmo.helemae at ria.ee.
 
 ## If you want to participate as a language technologist
 
@@ -128,11 +131,48 @@ If you want to contact regarding to Bürokratt's **technical solutions,** contac
 
 #### Rasa
 
-We currently rely a lot on Rasa but will make some changes to it starting from approximately Q3 2023. We'll keep the part of creating rules, stories, etc based on Rasa, but will most likely replace intents recognition with something else. This is mostly because of multi-intent recognition and due to the need to have more flexibility when it comes to intent-based custom actions.
+We currently rely heavily on Rasa for building conversational rules, stories, and intent-based actions. However, starting from Q4 2025, we plan to make some changes:
+
+- We will likely replace Rasa's intent recognition with a more flexible approach, especially to support multi-intent recognition.
+
+- Rasa remains available for rules, stories, and custom actions on client request, but without official support.
+
+#### LLM-based approach and Common Knowledge Base
+
+Recently, we have started experimenting with a large language model (LLM) approach. As part of this, we have developed a Common Knowledge Base (CKB) project:
+
+- Users can provide a webpage via a simple UI, which is then scraped and cleaned.
+
+- The Global Classifier (GC) ingests this data and, with the help of an LLM, generates synthetic training data (questions related to the domain).
+
+- This synthetic data is then used to train domain-specific models, enabling more flexible and knowledge-driven intent recognition and question answering.
+
+#### BYK-RAG (Retrieval-Augmented Generation Module)
+
+The **BYK-RAG Module** is part of the Burokratt ecosystem and provides **retrieval-augmented generation (RAG)** capabilities:
+
+- It uses data scraped and cleaned via the Common Knowledge Base (CKB).
+
+- It integrates with multiple LLM providers to generate AI-powered responses that are reliable, multilingual, and compliant.
+
+- The module includes flexible configuration and monitoring features for administrators.
+
+**NB!**
+By the end of this year, we expect to offer a choice between continuing with Rasa but without support or moving to an LLM/RAG-based approach, depending on the requirements of each task.
 
 ### Contact
 
-If you want to contact regarding to Bürokratt's language technology, contact veronika.mugra at ria.ee
+If you want to contact regarding to Bürokratt's language technology, contact merle-paula.videvik at ria.ee
+
+### Bürokratt as network
+
+#### DMR
+
+The DMR project acts as a mediator for conversations between multiple clients. It ensures secure, reliable, and efficient message exchange across the network, allowing different client instances to interact seamlessly.
+
+#### CentOps
+
+CentOps is a central hub and orchestration tool for managing deployments across multiple Kubernetes clusters. While it is part of the Bürokratt ecosystem, it is designed as a standalone platform that can be used independently for managing any delivery pipeline. Depending on the architecture, additional clusters can be added — for example, development, testing, staging, and production — giving operations engineers full control over the deployment lifecycle and environment management.
 
 ## If you want to start using Bürokratt as an institution
 
@@ -146,7 +186,7 @@ We are actively working on making Bürokratt available as SaaS on [Estonian Gove
 
 ### Bürokratt on-site
 
-Bürokratt can also be deployed on-site. See below for deployment instructions.
+Bürokratt can also be deployed on-site. Please note that on-site deployment requires a Kubernetes platform. Detailed deployment instructions are currently under preparation.
 
 ### Contact
 
@@ -154,13 +194,9 @@ If you want to contact regarding to start using Bürokratt as an institution, co
 
 ## If you're asked to deploy Bürokratt for your client
 
-### Docker
-
-We currently have support for deploying Bürokratt as Docker services. You can find appropriate instructions and files from https://github.com/buerokratt/Installation-Guides/tree/main/default-setup.
-
 ### Kubernetes
 
-Due to some issues regarding to the training module, we don't currently support Kubernetes version of Bürokratt. This should change by Q1 2024 the latest.
+Bürokratt is fully deployable on Kubernetes, supporting all core functionalities.
 
 ### Contact
 
