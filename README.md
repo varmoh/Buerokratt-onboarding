@@ -164,7 +164,7 @@ By the end of this year, we expect to offer a choice between continuing with Ras
 
 If you want to contact regarding to Bürokratt's language technology, contact merle-paula.videvik at ria.ee
 
-### Bürokratt as network
+## Bürokratt as network
 
 #### DMR
 
