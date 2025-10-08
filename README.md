@@ -143,6 +143,8 @@ Recently, we have started experimenting with a large language model (LLM) approa
 
 - Users can provide a webpage via a simple UI, which is then scraped and cleaned.
 
+#### Global Classifier
+
 - The Global Classifier (GC) ingests this data and, with the help of an LLM, generates synthetic training data (questions related to the domain).
 
 - This synthetic data is then used to train domain-specific models, enabling more flexible and knowledge-driven intent recognition and question answering.
